@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import './Product.css';
+import '../styles/Product.css';
 import { useNavigate } from 'react-router-dom';
 
 const Product = () => {
@@ -13,9 +13,9 @@ const Product = () => {
     });
   }
   return (
-    <div className="form-container">
+    <div className="pdtform-container">
       <form className="product-form" onSubmit={handleFormSubmit}>
-        <label htmlFor="product-id">Product ID:</label>
+        <label htmlFor="product-id"></label>
         <input
           type="text"
           id="product-id"

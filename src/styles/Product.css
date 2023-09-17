@@ -42,7 +42,6 @@ label {
 
 /* Style the input field */
 input[type="text"] {
-  width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;

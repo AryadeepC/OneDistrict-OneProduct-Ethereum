@@ -1,4 +1,5 @@
-// scripts/deploy.js
+// scripts/deploy.
+/* eslint-disable no-undef */
 import pkg from 'hardhat';
 const { ethers } = pkg;
 

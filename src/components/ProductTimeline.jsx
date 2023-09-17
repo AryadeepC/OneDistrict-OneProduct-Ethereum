@@ -1,17 +1,14 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import "./ProductTimeline.css"
+import "../styles/ProductTimeline.css"
 import { ethers } from 'ethers';
-// import pkg from 'hardhat';
-// const { ethers } = pkg;
-import { abi } from "../../artifacts/contracts/Traceability.sol/OneDistrictOneProduct.json"
-
-const contractABI = abi;
-const contractAddress = '0x5fbdb2315678afecb367f032d93f642f64180aa3';
+import { conf } from "./tx-config"
+const { contractAddress, contractAbi } = conf;
 
 const ProductTimeline = () => {
-    const provider = new ethers.providers.JsonRpcProvider("http://127.0.0.1:8545/");
-    const contract = new ethers.Contract(contractAddress, contractABI, provider);
+    // const provider = new ethers.providers.JsonRpcProvider("http://127.0.0.1:8545/");
+    const provider = new ethers.providers.JsonRpcProvider((import.meta.env.VITE_ALCHEMY_HTTP_ENDPOINT));
+    const contract = new ethers.Contract(contractAddress, contractAbi, provider);
 
     const { pid } = useParams();
     const [events, setEvents] = useState([]);
@@ -20,7 +17,6 @@ const ProductTimeline = () => {
         const fetchTimeline = async () => {
             try {
                 const result = await contract.getCheckpointsByProductId(pid)
-                // const result = await contract.getAuthor()
                 console.log("timeline", result);
                 setEvents(result);
             } catch (error) {
