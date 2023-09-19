@@ -48,17 +48,13 @@ const ProductTimeline = () => {
                 <ul className="timeline-list animate">
                     {events.map((event, index) => {
                         var x = new Date(event.timestamp.toNumber())
-                        var unitList = (
+                        return (
                             <li key={index} className="timeline-item">
                                 <div className="timeline-date">{x.toLocaleTimeString()}  |  {x.toDateString()}</div>
                                 <div className="timeline-date">{event.location}</div>
                                 <div className="timeline-event">{event.description}</div>
                             </li>
                         )
-                        {/* setTimeout(() => {
-                            unitList.classList.add('animate');
-                        }, index *1000); */}
-                        return unitList;
                     })}
                 </ul>
             </div>
