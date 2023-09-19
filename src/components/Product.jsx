@@ -20,12 +20,20 @@ const Product = () => {
           type="text"
           id="product-id"
           value={pid}
+          autoComplete='off'
           name="product-id"
           placeholder="Enter Product ID"
           onChange={e => setPid(e.target.value)}
         />
-        <button type="submit">Submit</button>
+        <button type="submit">View</button>
+        <button className='home' onClick={e => {
+          e.preventDefault();
+          navigate("/", {
+            replace: true
+          })
+        }}>Home</button>
       </form>
+
     </div>
   );
 };
