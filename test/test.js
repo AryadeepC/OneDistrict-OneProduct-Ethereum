@@ -8,7 +8,7 @@ describe("OneDistrictOneProduct", function () {
   // let owner;
   let OneDistrictOneProduct;
   let oneDistrictOneProduct;
-  
+
   const productId = 69;
   const checkpointId = 1;
   const location = "Kolkata";
@@ -27,15 +27,18 @@ describe("OneDistrictOneProduct", function () {
   });
 
   it("Should add a checkpoint", async function () {
-    await oneDistrictOneProduct.addCheckpoint(checkpointId, productId, location, description);
+    const unitTime = Date.now();
+    await oneDistrictOneProduct.addCheckpoint(checkpointId, productId, unitTime, location, description);
     const checkpoint = await oneDistrictOneProduct.getCheckpoint(checkpointId);
 
     expect(checkpoint.location).to.equal(location);
     expect(checkpoint.description).to.equal(description);
+    expect(checkpoint.timestamp).to.equal(unitTime);
   });
 
   it("Should get checkpoints by product ID", async function () {
-    await oneDistrictOneProduct.addCheckpoint(checkpointId, productId, location, description);
+    const unitTime = Date.now();
+    await oneDistrictOneProduct.addCheckpoint(checkpointId, productId, unitTime, location, description);
     const checkpoints = await oneDistrictOneProduct.getCheckpointsByProductId(productId);
 
     expect(checkpoints.length).to.equal(1);
@@ -44,10 +47,11 @@ describe("OneDistrictOneProduct", function () {
   });
 
   it("Should not add a checkpoint with the same ID", async function () {
-    await oneDistrictOneProduct.addCheckpoint(checkpointId, productId, location, description);
-
+    const unitTime = Date.now();
+    await oneDistrictOneProduct.addCheckpoint(checkpointId, productId, unitTime, location, description);
+ 
     await expect(
-      oneDistrictOneProduct.addCheckpoint(checkpointId, productId, location, description)
+      oneDistrictOneProduct.addCheckpoint(checkpointId, productId, unitTime, location, description)
     ).to.be.revertedWith("Checkpoint with this ID already exists");
   });
 

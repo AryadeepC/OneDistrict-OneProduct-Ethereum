@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 require("@nomiclabs/hardhat-waffle");
-require('dotenv').config({ path: "./config.env" })
+require('dotenv').config({ path: "./.env" })
 
 const { VITE_ALCHEMY_HTTP_ENDPOINT, VITE_WALLET_PRIVATE_KEY } = process.env;
 

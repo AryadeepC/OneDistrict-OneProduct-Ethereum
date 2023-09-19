@@ -1,0 +1,42 @@
+.spinner {
+  display: inline-block;
+  width: 80px;
+  text-align: center;
+}
+
+.dot {
+  width: 18px;
+  height: 18px;
+  background-color: #3498db;
+  border-radius: 100%;
+  display: inline-block;
+  margin: 0px 5px;
+  animation: rotateAndBounce 1.4s infinite ease-in-out;
+}
+
+.dot1 {
+  animation-delay: -0.32s;
+}
+
+.dot2 {
+  animation-delay: -0.16s;
+}
+
+@keyframes rotateAndBounce {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0);
+  }
+  16%,
+  84% {
+    transform: translateY(-20px) rotate(0);
+  }
+  32%,
+  48% {
+    transform: translateY(0) rotate(180deg);
+  }
+  64%,
+  80% {
+    transform: translateY(-20px) rotate(180deg);
+  }
+}

@@ -3,9 +3,11 @@ import { ethers } from 'ethers';
 import '../styles/ProductForm.css';
 import { conf } from "./tx-config"
 import { useNavigate } from 'react-router-dom';
+import Spinner from './Spinner';
 const { contractAddress, contractAbi, privateKey } = conf;
 
 const ProductForm = () => {
+    const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
     // const provider = new ethers.providers.JsonRpcProvider('http://localhost:8545');
     const provider = new ethers.providers.JsonRpcProvider(import.meta.env.VITE_ALCHEMY_HTTP_ENDPOINT);
@@ -23,10 +25,11 @@ const ProductForm = () => {
         e.preventDefault();
         try {
             console.log("in method")
-
+            setLoading(true)
             const transaction = await contractWithSigner.addCheckpoint(
                 checkpoint.checkpointId,
                 checkpoint.productId,
+                Date.now(),
                 checkpoint.location,
                 checkpoint.description
             );
@@ -50,63 +53,69 @@ const ProductForm = () => {
     };
 
 
-    return (
-        <div className="form-section">
-            <h2>Checkpoint Reached</h2>
-            <form onSubmit={handleFormSubmit}>
-                <div className="form-group">
-                    <label htmlFor="checkpointId">Checkpoint ID</label>
-                    <input
-                        type="number"
-                        id="checkpointId"
-                        autoComplete='off'
-                        value={checkpoint.checkpointId}
-                        onChange={(e) => setCheckpoint(prev => ({ ...prev, checkpointId: e.target.value }))}
-                        required
-                    />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="location">Location</label>
-                    <input
-                        type="text"
-                        id="location"
-                        value={checkpoint.location}
-                        autoComplete='off'
-                        onChange={(e) => setCheckpoint(prev => ({ ...prev, location: e.target.value }))}
-                        required
-                    />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="product">Product</label>
-                    <input
-                        type="number"
-                        id="product"
-                        autoComplete='off'
-                        value={checkpoint.productId}
-                        onChange={(e) => setCheckpoint(prev => ({ ...prev, productId: e.target.value }))}
-                        required
-                    />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="description">Description</label>
-                    <input
-                        type="text"
-                        id="description"
-                        value={checkpoint.description}
-                        onChange={(e) => setCheckpoint(prev => ({ ...prev, description: e.target.value }))}
-                        autoComplete='off'
-                        required
-                    />
-                </div>
-                <button type="submit">Submit</button>
-                <button className='home' onClick={e => {
-                    e.preventDefault();
-                    navigate("/", {
-                        replace: true
-                    })
-                }}>Home</button>
-            </form>
-        </div>
+    return (<>
+        {loading ? (
+            <Spinner /> // Display the Spinner component while loading
+        ) : (
+            <div className="form-section">
+                <h2>Checkpoint Reached</h2>
+                <form onSubmit={handleFormSubmit}>
+                    <div className="form-group">
+                        <label htmlFor="checkpointId">Checkpoint ID</label>
+                        <input
+                            type="number"
+                            id="checkpointId"
+                            autoComplete='off'
+                            value={checkpoint.checkpointId}
+                            onChange={(e) => setCheckpoint(prev => ({ ...prev, checkpointId: e.target.value }))}
+                            required
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="location">Location</label>
+                        <input
+                            type="text"
+                            id="location"
+                            value={checkpoint.location}
+                            autoComplete='off'
+                            onChange={(e) => setCheckpoint(prev => ({ ...prev, location: e.target.value }))}
+                            required
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="product">Product</label>
+                        <input
+                            type="number"
+                            id="product"
+                            autoComplete='off'
+                            value={checkpoint.productId}
+                            onChange={(e) => setCheckpoint(prev => ({ ...prev, productId: e.target.value }))}
+                            required
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="description">Description</label>
+                        <input
+                            type="text"
+                            id="description"
+                            value={checkpoint.description}
+                            onChange={(e) => setCheckpoint(prev => ({ ...prev, description: e.target.value }))}
+                            autoComplete='off'
+                            required
+                        />
+                    </div>
+                    <button type="submit">Submit</button>
+                    <button className='home' onClick={e => {
+                        e.preventDefault();
+                        navigate("/", {
+                            replace: true
+                        })
+                    }}>Home</button>
+                </form>
+            </div>
+
+        )}
+    </>
     );
 }
 

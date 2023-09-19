@@ -5,7 +5,7 @@ pragma solidity ^0.8.0;
 
 contract OneDistrictOneProduct {
     string public author = "ArC";
-    
+
     struct Checkpoint {
         uint256 id;
         uint256 productId;
@@ -31,6 +31,7 @@ contract OneDistrictOneProduct {
     function addCheckpoint(
         uint256 _id,
         uint256 _productId,
+        uint256 _unitTime,
         string memory _location,
         string memory _description
     ) public payable {
@@ -40,11 +41,10 @@ contract OneDistrictOneProduct {
             "Checkpoint with this ID already exists"
         );
 
-        uint256 timestamp = block.timestamp;
         checkpoints[_id] = Checkpoint(
             _id,
             _productId,
-            timestamp,
+            _unitTime,
             _location,
             _description
         );

@@ -43,9 +43,10 @@ label {
 
 /* Style the input field */
 input[type="text"] {
+  outline: none;
   font-family: "Mochiy Pop P One", sans-serif;
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 3px solid #ccc;
   border-radius: 4px;
   font-size: 16px;
   margin-bottom: 16px;
