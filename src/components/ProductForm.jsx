@@ -39,7 +39,9 @@ const ProductForm = () => {
             // Wait for the transaction to be mined (optional)
             await transaction.wait();
             console.log('Transaction confirmed.');
-            navigate("/")
+            navigate("/product/" + checkpoint.productId, {
+                replace: true,
+            })
         } catch (error) {
             console.error('Error calling state-changing method:', error);
         }

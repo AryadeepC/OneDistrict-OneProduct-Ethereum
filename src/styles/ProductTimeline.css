@@ -30,21 +30,6 @@
   position: relative;
 }
 
-.timeline-item .animate {
-  animation: slideIn 1s ease forwards;
-}
-
-@keyframes slideIn {
-  0% {
-    transform: translateY(-100%); /* Start from above */
-    opacity: 0;
-  }
-  100% {
-    transform: translateY(0); /* Glide down to original position */
-    opacity: 1;
-  }
-}
-
 .timeline-date {
   font-weight: bold;
   color: #007bff;
