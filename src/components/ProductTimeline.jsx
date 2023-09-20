@@ -35,7 +35,7 @@ const ProductTimeline = () => {
     return (
         <>
             {loading ? (
-                <Spinner /> // Display the Spinner component while loading
+                <Spinner />
             ) : (
                 <>
                     <div style={{

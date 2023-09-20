@@ -1,5 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&display=swap");
-/* Reset some default styles for consistency */
+/* @import url("https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&display=swap"); */
+
 body,
 h1,
 p,
@@ -11,9 +11,8 @@ input {
   border: 0;
 }
 
-/* Apply a background color to the body for vibrancy */
 body {
-  background-color: #f0f0f0; /* You can change this color */
+  background-color: #f0f0f0;
   font-family: Arial, sans-serif;
   display: flex;
   justify-content: center;
@@ -21,27 +20,23 @@ body {
   height: 100vh;
 }
 
-/* Style the form container */
 .form-container {
   text-align: center;
 }
 
-/* Style the form */
 .product-form {
-  background-color: #ffffff; /* You can change this color */
+  background-color: #ffffff;
   border-radius: 8px;
   padding: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Style the label */
 label {
   display: block;
   margin-bottom: 8px;
-  color: #333; /* You can change this color */
+  color: #333;
 }
 
-/* Style the input field */
 input[type="text"] {
   outline: none;
   font-family: "Mochiy Pop P One", sans-serif;
@@ -52,10 +47,9 @@ input[type="text"] {
   margin-bottom: 16px;
 }
 
-/* Style the submit button */
 button[type="submit"] {
-  background-color: #007bff; /* You can change this color */
-  color: #fff; /* You can change this color */
+  background-color: #007bff;
+  color: #fff;
   border: none;
   border-radius: 4px;
   padding: 10px 20px;
@@ -65,5 +59,5 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
-  background-color: #0056b3; /* You can change this color */
+  background-color: #0056b3;
 }

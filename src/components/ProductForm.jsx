@@ -9,14 +9,15 @@ const { contractAddress, contractAbi, privateKey } = conf;
 const ProductForm = () => {
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
+
     // const provider = new ethers.providers.JsonRpcProvider('http://localhost:8545');
     const provider = new ethers.providers.JsonRpcProvider(import.meta.env.VITE_ALCHEMY_HTTP_ENDPOINT);
     const signer = new ethers.Wallet(privateKey, provider);
     const contractWithSigner = new ethers.Contract(contractAddress, contractAbi, signer);
 
     const [checkpoint, setCheckpoint] = useState({
-        checkpointId: 0,
-        productId: 0,
+        checkpointId: '',
+        productId: '',
         location: '',
         description: '',
     })
@@ -27,8 +28,8 @@ const ProductForm = () => {
             console.log("in method")
             setLoading(true)
             const transaction = await contractWithSigner.addCheckpoint(
-                checkpoint.checkpointId,
-                checkpoint.productId,
+                parseInt(checkpoint.checkpointId),
+                parseInt(checkpoint.productId),
                 Date.now(),
                 checkpoint.location,
                 checkpoint.description
@@ -36,7 +37,6 @@ const ProductForm = () => {
 
             console.log('Transaction hash:', transaction.hash);
 
-            // Wait for the transaction to be mined (optional)
             await transaction.wait();
             console.log('Transaction confirmed.');
             navigate("/product/" + checkpoint.productId, {
@@ -57,7 +57,7 @@ const ProductForm = () => {
 
     return (<>
         {loading ? (
-            <Spinner /> // Display the Spinner component while loading
+            <Spinner />
         ) : (
             <div className="form-section">
                 <h2>Checkpoint Reached</h2>
@@ -85,7 +85,7 @@ const ProductForm = () => {
                         />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="product">Product</label>
+                        <label htmlFor="product">Product ID</label>
                         <input
                             type="number"
                             id="product"

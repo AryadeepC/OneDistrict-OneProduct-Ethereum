@@ -19,6 +19,7 @@ const Product = () => {
         <input
           type="text"
           id="product-id"
+          autoFocus="true"
           value={pid}
           autoComplete='off'
           name="product-id"

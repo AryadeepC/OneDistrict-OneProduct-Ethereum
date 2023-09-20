@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&display=swap"); */
 
 .timeline-section {
   font-family: "Mochiy Pop P One", sans-serif;
@@ -40,14 +40,12 @@
   color: #555;
 }
 
-/* Style for the last timeline item (no border at the bottom) */
 .timeline-item:last-child {
   margin-bottom: 0;
   margin-left: 3px;
   border-left: none;
 }
 
-/* Optional: Add animation for timeline items */
 .timeline-item::before {
   content: "";
   width: 15px;
@@ -74,12 +72,12 @@
 .home-timeline {
   height: 50px;
   margin-left: 15px;
-  color: #fff; /* Text color for the button */
-  border: none; /* No border */
-  padding: 10px 20px; /* Padding for the button */
-  border-radius: 5px; /* Rounded button */
-  font-size: 18px; /* Font size */
-  cursor: pointer; /* Change cursor on hover */
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
   font-family: "Mochiy Pop P One", sans-serif;
 }
 .home-timeline {

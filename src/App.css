@@ -1,18 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&display=swap");
 
-/* Reset default margin and padding */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Define styles for the page container */
 .page-container {
   bottom: 0;
-  display: flex; /* Display children in a row */
+  display: flex;
   width: 100vw;
-  height: 100vh; /* Set the height to 100% of the viewport */
+  height: 100vh;
 }
 
 .project-heading {
@@ -26,46 +24,33 @@
   padding-top: 20px;
   text-align: center;
   font-family: "Mochiy Pop P One", sans-serif;
-  font-size: 32px; /* Font size for the project heading */
-  margin-bottom: 20px; /* Add some space below the heading */
-  color: black; /* Text color for the heading */
+  font-size: 32px;
+  margin-bottom: 20px;
+  color: black;
 }
 
-/* Define styles for each section */
 .section {
-  display: flex; /* Display link centered vertically */
+  display: flex;
   flex: 1;
-  justify-content: center; /* Center the link horizontally */
-  align-items: center; /* Center the link vertically */
-  transition: background-color 0.3s ease; /* Smooth background color transition */
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s ease;
   gap: 250px;
-  overflow: hidden; /* Hide overflowing content */
-  position: relative; /* Position for pseudo-elements */
+  overflow: hidden;
+  position: relative;
   font-family: "Mochiy Pop P One", sans-serif;
 }
 
-/* Define styles for the left section */
-.section-left {
-  /* background-color: #3498db; */
-}
-
-/* Define styles for the right section */
-.section-right {
-  /* background-color: #e74c3c; */
-}
-
-/* Define styles for the link */
 .section-link {
-  text-decoration: none; /* Remove underline from links */
+  text-decoration: none;
   color: black;
   font-size: 45px;
-  font-size: 24px; /* Font size for links */
-  font-weight: bold; /* Bold text for links */
-  position: relative; /* Position for pseudo-elements */
-  z-index: 2; /* Place links above pseudo-elements */
+  font-size: 24px;
+  font-weight: bold;
+  position: relative;
+  z-index: 2;
 }
 
-/* Add a pseudo-element for a gradient effect */
 .section::after {
   content: "";
   position: absolute;
@@ -82,14 +67,11 @@
   transition: opacity 0.3s ease;
 }
 
-/* Show the gradient on hover */
 .section:hover::after {
   opacity: 1;
 }
 .section:hover a {
   opacity: 1;
-  /* text-shadow: 1px 2px gray; */
-
   cursor: pointer;
   scale: 2;
   color: white;
