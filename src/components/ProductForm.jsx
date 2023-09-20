@@ -68,6 +68,7 @@ const ProductForm = () => {
                             type="number"
                             id="checkpointId"
                             autoComplete='off'
+                            autoFocus='true'
                             value={checkpoint.checkpointId}
                             onChange={(e) => setCheckpoint(prev => ({ ...prev, checkpointId: e.target.value }))}
                             required
